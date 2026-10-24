@@ -1,0 +1,38 @@
+{
+  "rows": [
+    {
+      "phase": "zero",
+      "circuit": "none (coherent)",
+      "chi_tol_1e2": 4,
+      "chi_tol_1e4": 6
+    },
+    {
+      "phase": "linear",
+      "circuit": "16 single-qubit Rz gates",
+      "chi_tol_1e2": 4,
+      "chi_tol_1e4": 7
+    },
+    {
+      "phase": "quadratic",
+      "circuit": "~120 controlled-phase gates",
+      "chi_tol_1e2": 146,
+      "chi_tol_1e4": 251
+    },
+    {
+      "phase": "random",
+      "circuit": "not a short circuit (2^n values)",
+      "chi_tol_1e2": 143,
+      "chi_tol_1e4": 251
+    }
+  ],
+  "summary": {
+    "n_qubits": 16,
+    "grid_points": 65536,
+    "seed": 3,
+    "quadratic_chi": 251,
+    "random_chi": 251,
+    "quadratic_over_random": 1.0,
+    "finding": "A quadratic phase (short ~n^2/2-gate circuit) resists MPS compression almost as much as fully random phases -> a short quantum circuit can express a turbulence-like field that classical tensor networks cannot compress.",
+    "honest_limits": "Representability is NOT an application advantage. Real turbulence phases are not exactly quadratic (coherent vortices may compress better). Evolving Navier-Stokes and reading out useful observables efficiently are open problems (Carleman / Childs et al. lower bounds). 1D only."
+  }
+}

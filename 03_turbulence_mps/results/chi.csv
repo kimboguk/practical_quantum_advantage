@@ -1,0 +1,5 @@
+phase,circuit,chi_tol_1e2,chi_tol_1e4
+zero,none (coherent),4,6
+linear,16 single-qubit Rz gates,4,7
+quadratic,~120 controlled-phase gates,146,251
+random,not a short circuit (2^n values),143,251

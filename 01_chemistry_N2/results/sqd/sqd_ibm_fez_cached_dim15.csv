@@ -1,0 +1,2 @@
+R,HF,CCSD_T,FCI,SQD,sqd_dim,full_dim,subspace_frac,err_sqd_meh,err_ccsd_t_meh,ccsd_converged,lucj_amplitudes,samples
+1.1,-107.49650051179783,-107.65192158818509,-107.65412244752268,-107.62668685612086,225,14400,0.0156,27.435591401825832,2.2008593375915098,True,ccsd,ibm_fez (cached real shots)

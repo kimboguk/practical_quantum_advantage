@@ -1,0 +1,262 @@
+{
+  "rows": [
+    {
+      "N": 8,
+      "E_min": 8,
+      "merit_factor": 4.0,
+      "n_optima": 16,
+      "p_random": 0.0625,
+      "p_opt_qaoa": 0.6137872153920451,
+      "tts_qaoa": 1.6292291121789964,
+      "tts_qaoa_qmf": 1.2764125948058473,
+      "tts_mts_median": 20.0,
+      "tts_brute": 256.0
+    },
+    {
+      "N": 9,
+      "E_min": 12,
+      "merit_factor": 3.375,
+      "n_optima": 24,
+      "p_random": 0.046875,
+      "p_opt_qaoa": 0.2988273291648672,
+      "tts_qaoa": 3.346414140884303,
+      "tts_qaoa_qmf": 1.8293206774331021,
+      "tts_mts_median": 20.0,
+      "tts_brute": 512.0
+    },
+    {
+      "N": 10,
+      "E_min": 13,
+      "merit_factor": 3.846,
+      "n_optima": 40,
+      "p_random": 0.0390625,
+      "p_opt_qaoa": 0.45457013348021286,
+      "tts_qaoa": 2.19988056044058,
+      "tts_qaoa_qmf": 1.4831994338053733,
+      "tts_mts_median": 25.5,
+      "tts_brute": 1024.0
+    },
+    {
+      "N": 11,
+      "E_min": 5,
+      "merit_factor": 12.1,
+      "n_optima": 4,
+      "p_random": 0.001953125,
+      "p_opt_qaoa": 0.06319110172081924,
+      "tts_qaoa": 15.825012901627181,
+      "tts_qaoa_qmf": 3.9780664777787687,
+      "tts_mts_median": 885.5,
+      "tts_brute": 2048.0
+    },
+    {
+      "N": 12,
+      "E_min": 10,
+      "merit_factor": 7.2,
+      "n_optima": 16,
+      "p_random": 0.00390625,
+      "p_opt_qaoa": 0.07329428424690473,
+      "tts_qaoa": 13.643628698676196,
+      "tts_qaoa_qmf": 3.6937282924812154,
+      "tts_mts_median": 274.0,
+      "tts_brute": 4096.0
+    },
+    {
+      "N": 13,
+      "E_min": 6,
+      "merit_factor": 14.083,
+      "n_optima": 4,
+      "p_random": 0.00048828125,
+      "p_opt_qaoa": 0.012993136210337965,
+      "tts_qaoa": 76.96371251802562,
+      "tts_qaoa_qmf": 8.772896472546888,
+      "tts_mts_median": 6346.0,
+      "tts_brute": 8192.0
+    },
+    {
+      "N": 14,
+      "E_min": 19,
+      "merit_factor": 5.158,
+      "n_optima": 72,
+      "p_random": 0.00439453125,
+      "p_opt_qaoa": 0.15499006823493167,
+      "tts_qaoa": 6.452026322642911,
+      "tts_qaoa_qmf": 2.5400839203937555,
+      "tts_mts_median": 140.0,
+      "tts_brute": 16384.0
+    },
+    {
+      "N": 15,
+      "E_min": 15,
+      "merit_factor": 7.5,
+      "n_optima": 8,
+      "p_random": 0.000244140625,
+      "p_opt_qaoa": 0.018723265591312266,
+      "tts_qaoa": 53.409486455397364,
+      "tts_qaoa_qmf": 7.308179421401568,
+      "tts_mts_median": 9101.0,
+      "tts_brute": 32768.0
+    },
+    {
+      "N": 16,
+      "E_min": 24,
+      "merit_factor": 5.333,
+      "n_optima": 32,
+      "p_random": 0.00048828125,
+      "p_opt_qaoa": 0.030138280274456985,
+      "tts_qaoa": 33.180393535842434,
+      "tts_qaoa_qmf": 5.760242489326507,
+      "tts_mts_median": 1152.0,
+      "tts_brute": 65536.0
+    },
+    {
+      "N": 17,
+      "E_min": 32,
+      "merit_factor": 4.516,
+      "n_optima": 44,
+      "p_random": 0.000335693359375,
+      "p_opt_qaoa": 0.026484037601422324,
+      "tts_qaoa": 37.75859312125033,
+      "tts_qaoa_qmf": 6.144802122220888,
+      "tts_mts_median": 738.0,
+      "tts_brute": 131072.0
+    },
+    {
+      "N": 18,
+      "E_min": 25,
+      "merit_factor": 6.48,
+      "n_optima": 16,
+      "p_random": 6.103515625e-05,
+      "p_opt_qaoa": 0.008696241506318654,
+      "tts_qaoa": 114.99220660711919,
+      "tts_qaoa_qmf": 10.723441919790455,
+      "tts_mts_median": 1935.0,
+      "tts_brute": 262144.0
+    },
+    {
+      "N": 19,
+      "E_min": 29,
+      "merit_factor": 6.224,
+      "n_optima": 8,
+      "p_random": 1.52587890625e-05,
+      "p_opt_qaoa": 0.0026730423705116965,
+      "tts_qaoa": 374.1055551650577,
+      "tts_qaoa_qmf": 19.341808477106213,
+      "tts_mts_median": 36197.5,
+      "tts_brute": 524288.0
+    },
+    {
+      "N": 20,
+      "E_min": 26,
+      "merit_factor": 7.692,
+      "n_optima": 8,
+      "p_random": 7.62939453125e-06,
+      "p_opt_qaoa": 0.0012875624364464546,
+      "tts_qaoa": 776.6613654557223,
+      "tts_qaoa_qmf": 27.868644844263994,
+      "tts_mts_median": 25714.5,
+      "tts_brute": 1048576.0
+    },
+    {
+      "N": 21,
+      "E_min": 26,
+      "merit_factor": 8.481,
+      "n_optima": 4,
+      "p_random": 1.9073486328125e-06,
+      "p_opt_qaoa": 0.0005705037284131438,
+      "tts_qaoa": 1752.8369232248492,
+      "tts_qaoa_qmf": 41.86689531389746,
+      "tts_mts_median": 229870.5,
+      "tts_brute": 2097152.0
+    },
+    {
+      "N": 22,
+      "E_min": 39,
+      "merit_factor": 6.205,
+      "n_optima": 24,
+      "p_random": 5.7220458984375e-06,
+      "p_opt_qaoa": 0.001589878265713796,
+      "tts_qaoa": 628.9789737776164,
+      "tts_qaoa_qmf": 25.079453219271276,
+      "tts_mts_median": 13567.5,
+      "tts_brute": 4194304.0
+    },
+    {
+      "N": 23,
+      "E_min": 47,
+      "merit_factor": 5.628,
+      "n_optima": 24,
+      "p_random": 2.86102294921875e-06,
+      "p_opt_qaoa": 0.000936397376273438,
+      "tts_qaoa": 1067.9226846829495,
+      "tts_qaoa_qmf": 32.67908635018656,
+      "tts_mts_median": 56845.0,
+      "tts_brute": 8388608.0
+    },
+    {
+      "N": 24,
+      "E_min": 36,
+      "merit_factor": 8.0,
+      "n_optima": 8,
+      "p_random": 4.76837158203125e-07,
+      "p_opt_qaoa": 0.0002916061950568483,
+      "tts_qaoa": 3429.282425927375,
+      "tts_qaoa_qmf": 58.560075357937976,
+      "tts_mts_median": 30360.5,
+      "tts_brute": 16777216.0
+    }
+  ],
+  "summary": {
+    "p": 12,
+    "tuned_on": [
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "dgamma": -3.3539701824483963,
+    "dbeta": 0.28359327071901574,
+    "fit_N": [
+      14,
+      24
+    ],
+    "base_qaoa": 1.753421636962976,
+    "base_qaoa_qmf": 1.3241682812101248,
+    "base_mts": 1.6591287562648447,
+    "base_brute": 2.0,
+    "fits": {
+      "tts_qaoa": {
+        "base": 1.753421636962976,
+        "slope_log2": 0.8101729558310212,
+        "intercept_log2": -7.612356077140516
+      },
+      "tts_qaoa_qmf": {
+        "base": 1.3241682812101248,
+        "slope_log2": 0.4050864779155106,
+        "intercept_log2": -3.806178038570258
+      },
+      "tts_mts_median": {
+        "base": 1.6591287562648447,
+        "slope_log2": 0.730425850619764,
+        "intercept_log2": -0.8859555238021939
+      }
+    },
+    "literature": {
+      "qaoa_p12": 1.46,
+      "qaoa_qmf": 1.21,
+      "mts": 1.34,
+      "ref": "Shaydulin et al., Sci. Adv. 10, eadm6761 (2024)"
+    },
+    "circuit_check": {
+      "backend": "aer-CPU",
+      "N": 8,
+      "p": 12,
+      "shots": 4000,
+      "depth": 675,
+      "two_qubit_gates": 783,
+      "p_opt_sampled": 0.616,
+      "p_opt_exact": 0.6137872153920451
+    },
+    "honest_limits": "Exponents fitted on small N are fragile. QAOA+QMF needs fault-tolerant hardware; QAOA alone is not faster than MTS in the literature. The LABS cost has O(N^3) 4-body terms -> deep circuits on today's hardware. Shots and MTS evaluations are different units: compare exponents."
+  }
+}

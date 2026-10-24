@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "R": 1.1,
+      "HF": -107.49650051179778,
+      "CCSD_T": -107.65192153180034,
+      "FCI": -107.65412244752245,
+      "SQD": -107.5644468571145,
+      "sqd_dim": 225,
+      "full_dim": 14400,
+      "subspace_frac": 0.0156,
+      "err_sqd_meh": 89.67559040794981,
+      "err_ccsd_t_meh": 2.20091572211345,
+      "ccsd_converged": true,
+      "lucj_amplitudes": "none",
+      "samples": "uniform random bitstrings (no circuit)"
+    }
+  ],
+  "summary": {
+    "molecule": "N2",
+    "basis": "STO-3G",
+    "backend": "random",
+    "shots": 2000,
+    "max_dim_per_spin": 15,
+    "note": "SQD energy is variational (>= FCI). Its error vs FCI comes from the truncated subspace; CCSD(T) error comes from the method.",
+    "honest_limits": "Tiny system: classical selected-CI finds the same subspace. Noiseless simulated samples are optimistic; real-hardware advantage of SQD is unproven."
+  }
+}

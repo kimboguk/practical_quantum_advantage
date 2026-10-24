@@ -1,0 +1,52 @@
+{
+  "rows": [
+    {
+      "eps": 0.005,
+      "estimate": 0.01651665478583564,
+      "exact": 0.016519889466858076,
+      "quantum_oracle_calls": 62464,
+      "classical_mc_samples": 2497,
+      "sample_ratio": 0.04
+    },
+    {
+      "eps": 0.002,
+      "estimate": 0.016516646343957917,
+      "exact": 0.016519889466858076,
+      "quantum_oracle_calls": 62464,
+      "classical_mc_samples": 15604,
+      "sample_ratio": 0.25
+    },
+    {
+      "eps": 0.001,
+      "estimate": 0.01651663877476783,
+      "exact": 0.016519889466858076,
+      "quantum_oracle_calls": 62464,
+      "classical_mc_samples": 62415,
+      "sample_ratio": 1.0
+    },
+    {
+      "eps": 0.0005,
+      "estimate": 0.016516631913735272,
+      "exact": 0.016519889466858076,
+      "quantum_oracle_calls": 62464,
+      "classical_mc_samples": 249658,
+      "sample_ratio": 4.0
+    },
+    {
+      "eps": 0.0002,
+      "estimate": 0.016518712754735147,
+      "exact": 0.016519889466858076,
+      "quantum_oracle_calls": 1088512,
+      "classical_mc_samples": 1560361,
+      "sample_ratio": 1.43
+    }
+  ],
+  "summary": {
+    "n_qubits": 4,
+    "exact_probability": 0.016519889466858076,
+    "backend": "statevector(exact)",
+    "crossover_eps": 0.0005,
+    "scaling": "classical MC ~ 1/eps^2 (halving eps -> 4x samples); quantum AE ~ 1/eps (halving eps -> ~2x oracle calls)",
+    "honest_limits": "One oracle call is a deep circuit; on error-corrected hardware (slow logical clock, ~45 MHz cited for derivative pricing) it is far slower than one classical sample, pushing the real crossover to much smaller eps / larger problems. Classical MC also has importance sampling. The quadratic speedup alone is not enough -- which is why finance is not the first quantum priority."
+  }
+}

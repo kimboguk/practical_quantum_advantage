@@ -1,0 +1,73 @@
+{
+  "rows": [
+    {
+      "R": 1.1,
+      "HF": -107.4965005117978,
+      "CCSD_T": -107.65192158809735,
+      "FCI": -107.65412244752328,
+      "SQD": -107.63496972078023,
+      "sqd_dim": 900,
+      "full_dim": 14400,
+      "subspace_frac": 0.0625,
+      "err_sqd_meh": 19.152726743044468,
+      "err_ccsd_t_meh": 2.2008594259261827,
+      "ccsd_converged": true,
+      "lucj_amplitudes": "none",
+      "samples": "uniform random bitstrings (no circuit)"
+    },
+    {
+      "R": 1.5,
+      "HF": -107.27244850120607,
+      "CCSD_T": -107.5708312116999,
+      "FCI": -107.58163492221338,
+      "SQD": -107.55650998672357,
+      "sqd_dim": 900,
+      "full_dim": 14400,
+      "subspace_frac": 0.0625,
+      "err_sqd_meh": 25.124935489813538,
+      "err_ccsd_t_meh": 10.803710513485498,
+      "ccsd_converged": true,
+      "lucj_amplitudes": "none",
+      "samples": "uniform random bitstrings (no circuit)"
+    },
+    {
+      "R": 2.0,
+      "HF": -106.87150404560843,
+      "CCSD_T": -107.56360963902479,
+      "FCI": -107.4551555977296,
+      "SQD": -107.39916140220298,
+      "sqd_dim": 900,
+      "full_dim": 14400,
+      "subspace_frac": 0.0625,
+      "err_sqd_meh": 55.99419552662255,
+      "err_ccsd_t_meh": -108.45404129518954,
+      "ccsd_converged": true,
+      "lucj_amplitudes": "none",
+      "samples": "uniform random bitstrings (no circuit)"
+    },
+    {
+      "R": 2.5,
+      "HF": -106.61695908276901,
+      "CCSD_T": -107.04977801898207,
+      "FCI": -107.44041650044541,
+      "SQD": -107.43574342475567,
+      "sqd_dim": 900,
+      "full_dim": 14400,
+      "subspace_frac": 0.0625,
+      "err_sqd_meh": 4.673075689737516,
+      "err_ccsd_t_meh": 390.63848146334124,
+      "ccsd_converged": false,
+      "lucj_amplitudes": "none",
+      "samples": "uniform random bitstrings (no circuit)"
+    }
+  ],
+  "summary": {
+    "molecule": "N2",
+    "basis": "STO-3G",
+    "backend": "random",
+    "shots": 2000,
+    "max_dim_per_spin": 30,
+    "note": "SQD energy is variational (>= FCI). Its error vs FCI comes from the truncated subspace; CCSD(T) error comes from the method.",
+    "honest_limits": "Tiny system: classical selected-CI finds the same subspace. Noiseless simulated samples are optimistic; real-hardware advantage of SQD is unproven."
+  }
+}

@@ -1,0 +1,18 @@
+# Practical Quantum Advantage demos -- pinned to a verified, reproducible set.
+# Core (conda-forge recommended; see environment.md):
+qiskit==2.6.0
+qiskit-aer==0.18.0            # GPU build on conda-forge: qiskit-aer=*=cuda129* ; CPU wheel from pip is fine
+qiskit-algorithms==0.4.0
+numpy==2.4.6
+scipy==1.17.1
+matplotlib==3.11.2
+pyscf==2.14.0                 # demo A (classical quantum chemistry)
+ffsim==0.0.84                 # demo A2 (run_sqd.py: LUCJ circuit)
+qiskit-addon-sqd==0.14.0      # demo A2 (run_sqd.py: sample-based quantum diagonalization)
+
+# Optional / wider ecosystem (installed in the project env, not all required per demo):
+qiskit-nature==0.8.0          # quantum chemistry layer (uses PySCF driver)
+qiskit-finance==0.4.1         # finance app module (demo B runs WITHOUT it)
+qiskit-machine-learning==0.9.1
+qiskit-ionq==1.1.1            # run on IonQ cloud (needs IONQ_API_KEY)
+dwave-ocean-sdk==9.5.0        # D-Wave Ocean (dimod, dwave-samplers, dwave-system)

@@ -1,0 +1,11 @@
+backend,target,n_qubits,depth,shots,seconds,distinct_outcomes
+aer-CPU,cpu,20,6,1024,0.2366,1013
+aer-CPU,cpu,22,6,1024,0.322,1021
+aer-CPU,cpu,24,6,1024,1.3146,1024
+aer-CPU,cpu,26,6,1024,5.3001,1024
+aer-CPU,cpu,28,6,1024,22.0062,1024
+aer-GPU,gpu,20,6,1024,0.673,1014
+aer-GPU,gpu,22,6,1024,0.0469,1023
+aer-GPU,gpu,24,6,1024,0.1227,1024
+aer-GPU,gpu,26,6,1024,0.4666,1024
+aer-GPU,gpu,28,6,1024,1.9574,1024

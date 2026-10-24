@@ -1,0 +1,2 @@
+R,HF,CCSD_T,FCI,SQD,sqd_dim,full_dim,subspace_frac,err_sqd_meh,err_ccsd_t_meh,ccsd_converged,lucj_amplitudes,samples
+1.1,-107.49650051179778,-107.65192153180034,-107.65412244752245,-107.5644468571145,225,14400,0.0156,89.67559040794981,2.20091572211345,True,none,uniform random bitstrings (no circuit)

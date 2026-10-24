@@ -1,0 +1,12 @@
+{
+  "gpu_speedup_vs_cpu": {
+    "20": 0.352,
+    "22": 6.866,
+    "24": 10.714,
+    "26": 11.359,
+    "28": 11.243
+  },
+  "gpu_crossover_qubits": 22,
+  "max_n": 28,
+  "honest_limits": "Simulating a quantum computer is a classical computation, so this measures classical statevector-simulation speed, not a quantum advantage. GPU wins only once the statevector is large enough to amortise launch/transfer overhead. IonQ cloud timings include network/queue latency and are not comparable wall-clock to local runs -- they show portability, not speed."
+}

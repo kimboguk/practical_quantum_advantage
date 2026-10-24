@@ -1,0 +1,17 @@
+# Private internal docs (line-by-line walkthroughs, plan) — not for public repo
+docs/
+
+# Secrets (API keys) -- copy .env.example to .env
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

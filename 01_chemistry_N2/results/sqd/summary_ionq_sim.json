@@ -1,0 +1,73 @@
+{
+  "rows": [
+    {
+      "R": 1.1,
+      "HF": -107.4965005117978,
+      "CCSD_T": -107.65192153186412,
+      "FCI": -107.65412244752248,
+      "SQD": -107.63051234832064,
+      "sqd_dim": 81,
+      "full_dim": 14400,
+      "subspace_frac": 0.0056,
+      "err_sqd_meh": 23.610099201846424,
+      "err_ccsd_t_meh": 2.200915658363556,
+      "ccsd_converged": true,
+      "lucj_amplitudes": "ccsd",
+      "samples": "ionq_sim"
+    },
+    {
+      "R": 1.5,
+      "HF": -107.27244850120604,
+      "CCSD_T": -107.57083121180642,
+      "FCI": -107.58163492217022,
+      "SQD": -107.56311587331362,
+      "sqd_dim": 289,
+      "full_dim": 14400,
+      "subspace_frac": 0.0201,
+      "err_sqd_meh": 18.519048856603604,
+      "err_ccsd_t_meh": 10.803710363802566,
+      "ccsd_converged": true,
+      "lucj_amplitudes": "ccsd",
+      "samples": "ionq_sim"
+    },
+    {
+      "R": 2.0,
+      "HF": -106.87150404560846,
+      "CCSD_T": -107.56360988586673,
+      "FCI": -107.45515559767468,
+      "SQD": -107.43329959893602,
+      "sqd_dim": 225,
+      "full_dim": 14400,
+      "subspace_frac": 0.0156,
+      "err_sqd_meh": 21.8559987386584,
+      "err_ccsd_t_meh": -108.45428819204983,
+      "ccsd_converged": true,
+      "lucj_amplitudes": "ccsd",
+      "samples": "ionq_sim"
+    },
+    {
+      "R": 2.5,
+      "HF": -106.61695908276897,
+      "CCSD_T": -107.19898724233673,
+      "FCI": -107.44041645084936,
+      "SQD": -107.43395549010705,
+      "sqd_dim": 196,
+      "full_dim": 14400,
+      "subspace_frac": 0.0136,
+      "err_sqd_meh": 6.460960742302291,
+      "err_ccsd_t_meh": 241.42920851262772,
+      "ccsd_converged": false,
+      "lucj_amplitudes": "mp2",
+      "samples": "ionq_sim"
+    }
+  ],
+  "summary": {
+    "molecule": "N2",
+    "basis": "STO-3G",
+    "backend": "ionq_sim",
+    "shots": 2000,
+    "max_dim_per_spin": 30,
+    "note": "SQD energy is variational (>= FCI). Its error vs FCI comes from the truncated subspace; CCSD(T) error comes from the method.",
+    "honest_limits": "Tiny system: classical selected-CI finds the same subspace. Noiseless simulated samples are optimistic; real-hardware advantage of SQD is unproven."
+  }
+}
