@@ -3,9 +3,10 @@
 Can we *show* where a quantum computer helps — with code anyone can run and
 numbers anyone can check? These self-contained demos do exactly that, at a
 small enough scale to run on a laptop, while being honest about what they do and
-do **not** prove. There are five demos: four application areas (chemistry,
-finance, turbulence, optimization) and one backend-scaling study (local GPU and
-a real quantum vendor's cloud).
+do **not** prove. There are six demos: four application areas (chemistry,
+finance, turbulence, optimization), a follow-up on the finance case (QSP payoff
+encoding), and one backend-scaling study (local GPU and a real quantum vendor's
+cloud).
 
 ## The ground rule
 
@@ -29,6 +30,7 @@ honesty is the point: it is what makes the positive claims trustworthy.
 | **C** | [Turbulence: field compressibility](03_turbulence_mps/) | **Representability** (concept) | A short quantum circuit can produce a turbulence-like field that classical tensor-network compression cannot squeeze. A *necessary* condition for quantum CFD — not an application advantage. |
 | **D** | [Backend scaling: CPU vs GPU vs IonQ cloud](04_scaling/) | **Engineering** (not an advantage) | Where a GPU earns its keep for *simulation* (~11× past ~22 qubits here), and the same circuit running on a real quantum vendor's cloud. Honest: this measures classical simulation speed, not quantum advantage. |
 | **E** | [LABS optimization: QAOA scaling](05_labs_qaoa/) | **Scaling exponent** (claimed in literature) | Time-to-solution exponents for QAOA, QAOA + quantum minimum finding and a classical memetic tabu search, measured up to N = 24. Same ordering as the published claim (QAOA+QMF smallest), but exponents are fragile at small N and QMF needs fault tolerance. |
+| **F** | [QSP: payoff encoding without arithmetic](06_qsp_payoff/) | **Mechanism** (constant-factor saving) | Quantum Signal Processing writes an option payoff into an amplitude with single-qubit rotations only; the phase fit is exact to machine precision and the error (~1/d) comes from the polynomial. The idea behind the ~16× T-gate saving reported for derivative pricing — a constant factor, not an advantage by itself. |
 
 Each folder has its own README with the industry context, the result figure, and
 the honest limits.
@@ -46,6 +48,9 @@ the honest limits.
 - **Demo E tests a published claim** — it reproduces the *ordering* of LABS
   scaling exponents at small N, shows noise erasing the effect today, and uses
   Max-Cut as a textbook QAOA control with no advantage claim.
+- **Demo F follows up on B** — it shows *how* the cost of one amplitude-estimation
+  query is being reduced (QSP instead of quantum arithmetic), and why that is a
+  constant-factor saving, not an advantage on its own.
 
 ## Reproducibility
 
@@ -83,8 +88,15 @@ automatically by `common/backend.py`; never commit it. Demo B takes
 
 ## Report
 
-A narrative write-up that stitches the three figures together for a non-specialist
-reader is in [`REPORT.md`](REPORT.md).
+A narrative write-up that stitches the demos' figures together for a
+non-specialist reader is in [`REPORT.md`](REPORT.md).
+
+## License
+
+MIT — see [`LICENSE`](LICENSE). The SQD workflow and the `ibm_fez` sample data
+in demo A are adapted from the qiskit-community NTU 2026 workshop and remain
+under Apache-2.0; see [`NOTICE`](NOTICE) and
+[`LICENSES/Apache-2.0.txt`](LICENSES/Apache-2.0.txt).
 
 ---
 

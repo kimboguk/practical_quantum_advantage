@@ -1,0 +1,37 @@
+Practical Quantum Advantage
+Copyright (c) 2026 Boguk Kim -- MIT License (see LICENSE)
+
+This repository includes material derived from third-party work licensed under
+the Apache License, Version 2.0 (full text: LICENSES/Apache-2.0.txt).
+
+------------------------------------------------------------------------------
+Source: "Scaling for Quantum Advantage and Beyond: 2026 -- NTU Technical
+        Workshops", qiskit-community
+        https://github.com/qiskit-community/2026-ntu-scaling-for-quantum-advantage-and-beyond
+        Copyright the contributors to that repository.
+License: Apache License, Version 2.0
+
+Derived files, and changes made:
+
+  01_chemistry_N2/data/n2_ibm_fez_samples.npz
+      Measurement samples (10,000 shots, 20 qubits) from IBM's ibm_fez device,
+      originally 01-quantum-chemistry/data/n2_device_bitarray.npy.
+      Changed: converted from a pickled Qiskit BitArray to a pickle-free NumPy
+      .npz (fields: array, num_bits). Sample values are unchanged.
+
+  01_chemistry_N2/data/n2_ibm_fez_meta.json
+      Originally 01-quantum-chemistry/data/n2_device_job_meta.json.
+      Changed: added "source" and "geometry" fields.
+
+  01_chemistry_N2/run_sqd.py
+      The SQD workflow (LUCJ ansatz from CCSD amplitudes via ffsim, ffsim
+      pre-init transpilation, iterative configuration recovery with
+      qiskit-addon-sqd) is adapted from
+      01-quantum-chemistry/notebooks/chemistry_workshop_part-1.ipynb.
+      Changed: rewritten as a script; multiple molecules and bond lengths;
+      MP2 amplitudes when CCSD does not converge; sampling through this
+      repository's backend selector (Aer, IonQ cloud); a random-bitstring
+      control; comparison with CCSD(T) and FCI.
+
+All other files are original to this repository and licensed under the MIT
+License.

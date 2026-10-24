@@ -97,6 +97,16 @@ smaller ε or much larger problems — and classical Monte Carlo has its own tri
 (importance sampling). This is the honest reason finance is **not** the first
 place to expect a quantum payoff.
 
+**Where the cost is being cut (Demo F):** much of one query's cost used to be
+reversible arithmetic to compute the payoff. Quantum Signal Processing writes
+the payoff into an amplitude with a sequence of single-qubit rotations instead;
+in our 1-qubit example the encoding is exact to machine precision and the only
+error is the polynomial approximation, shrinking as ~1/d with d rotations. This
+is the mechanism behind the reported ~16× fewer T-gates — a constant factor,
+which helps but does not by itself close the gap above.
+
+![QSP payoff encoding](06_qsp_payoff/figures/qsp_payoff.png)
+
 ---
 
 ## 3. Optimization (LABS) — a published scaling claim, tested small
@@ -175,7 +185,7 @@ checked by classical simulation.
 | Area | Verdict |
 |---|---|
 | **Chemistry** | Strongest. The best routine classical method demonstrably fails in the strongly-correlated region; exact quantum answers need a good initial state. A scaled-down version of a real bottleneck. |
-| **Finance** | A genuine quadratic speedup, but not yet sufficient — the honest reason it is not the first priority. |
+| **Finance** | A genuine quadratic speedup, but not yet sufficient — the honest reason it is not the first priority. QSP (Demo F) cuts the per-query cost by a constant factor. |
 | **Optimization (LABS)** | A published scaling advantage that needs fault tolerance; our small-N reproduction matches the ordering but not decisively, and noise erases it today. |
 | **Turbulence** | A concept. Shows a necessary condition for quantum CFD; the application case is unproven. |
 | **Tooling** | Not a quantum advantage. Shows which classical hardware to simulate on, and that the demos run on a real vendor's cloud, not just locally. |
