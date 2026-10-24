@@ -42,6 +42,11 @@ Classical MC grows as **1/ε²** (halve the error → 4× the work); quantum gro
 **~1/ε** (halve the error → ~2× the work). The curves cross near **ε ≈ 0.001**:
 for finer precision, quantum needs *fewer queries*.
 
+The quantum column moves in **steps**, not smoothly: IQAE chooses its Grover
+powers from a discrete schedule, so the total stays at 62,464 until the target ε
+forces an extra, longer round (→ 1,088,512 at ε = 0.0002). The ~1/ε trend holds
+across the range (ε 25× smaller → ~17× more calls), not between adjacent rows.
+
 ## What it means
 
 The quadratic speedup is genuine and matters more as you demand higher precision
@@ -49,11 +54,14 @@ or tackle larger, nested problems.
 
 ## What this does NOT prove (honest limits)
 
-- "Fewer queries" ≠ "faster." **One quantum oracle call is a deep circuit.** On
-  error-corrected hardware with a slow logical clock (≈45 MHz has been cited for
-  derivative pricing), one oracle call is *millions of times slower* than one
-  classical sample, pushing the real crossover to much smaller ε / larger
-  problems.
+- "Fewer queries" ≠ "faster." **One quantum oracle call is a deep circuit**,
+  and logical gates on error-corrected hardware are slow, so one oracle call is
+  orders of magnitude slower than one classical sample. For a realistic
+  derivative-pricing problem, advantage would require **~4.7k logical qubits
+  executing ~10⁹ T-gates at a 45 MHz logical clock rate** (Stamatopoulos et al.,
+  *Quantum* 2024, arXiv:2307.14310) — a *required* speed far beyond projected
+  error-corrected hardware. This pushes the real crossover to much smaller ε /
+  larger problems.
 - Classical MC also has **variance-reduction tricks** (importance sampling) that
   slash the sample count for rare events.
 - **Bottom line:** this is the honest basis for *why finance is not the first

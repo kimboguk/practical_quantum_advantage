@@ -105,27 +105,32 @@ def compute_curve(geometry, bond_lengths, basis):
 def analyze(rows, label, basis, nao, nelec):
     errs = np.array([r["err_ccsd_t_meh"] for r in rows])
     Rs = np.array([r["R"] for r in rows])
-    abs_err = np.abs(errs)
-    i_worst = int(np.nanargmax(abs_err))   # diverged CCSD can give NaN
-    # first R where CCSD(T) leaves chemical accuracy
-    beyond = Rs[abs_err > CHEM_ACCURACY_MEH]
-    r_break = float(beyond.min()) if beyond.size else None
+    # only converged CCSD gives reproducible errors (unconverged can even be NaN)
+    conv = np.array([r["ccsd_converged"] for r in rows])
+    abs_err = np.where(conv, np.abs(errs), np.nan)
+    i_worst = int(np.nanargmax(abs_err)) if conv.any() else 0
+    # first R where CCSD(T) is outside chemical accuracy
+    outside = Rs[abs_err > CHEM_ACCURACY_MEH]
+    r_break = float(outside.min()) if outside.size else None
     summary = dict(
         molecule=label, basis=basis.upper(),
         active_space=f"{nao} orbitals / {nelec} electrons ({2 * nao} qubits, JW)",
         chem_accuracy_meh=CHEM_ACCURACY_MEH,
+        # worst / max / first-R use converged-CCSD points only
         worst=dict(R=float(Rs[i_worst]), err_meh=float(errs[i_worst]),
                    err_kcal=float(errs[i_worst] / 1000.0 * HARTREE_TO_KCAL)),
-        first_R_beyond_chem_accuracy=r_break,
-        max_abs_err_meh=float(np.nanmax(abs_err)),
+        first_R_outside_chem_accuracy=r_break,
+        max_abs_err_meh=float(np.nanmax(abs_err)) if conv.any() else None,
         ccsd_unconverged_R=[r["R"] for r in rows if not r["ccsd_converged"]],
         note=("CCSD(T) is the classical 'gold standard'; its growing, "
               "eventually unphysical error vs exact FCI marks the strong-"
-              "correlation breakdown. FCI == ideal QPE in this basis."),
+              "correlation breakdown (CCSD(T) is not variational). FCI == ideal "
+              "QPE in this basis, given a good enough initial state."),
         honest_limits=("This small case is solved exactly by FCI and also well "
                        "by classical strong-correlation methods (DMRG, CASSCF/"
-                       "MRCI). The real crossover where no classical method "
-                       "suffices is estimated around ~50 active orbitals."),
+                       "MRCI). Systems where no classical method suffices are "
+                       "expected to need tens of active orbitals. STO-3G: method "
+                       "comparison within one basis, not agreement with experiment."),
     )
     return summary
 
@@ -173,10 +178,11 @@ def main():
 
     print("\n=== Analysis ===")
     w = summary["worst"]
-    print(f"Worst CCSD(T) error: {w['err_meh']:+.1f} mEh "
+    print(f"Worst CCSD(T) error (converged points): {w['err_meh']:+.1f} mEh "
           f"(= {w['err_kcal']:+.0f} kcal/mol) at R={w['R']} A")
-    print(f"CCSD(T) leaves chemical accuracy ({CHEM_ACCURACY_MEH} mEh) "
-          f"beyond R={summary['first_R_beyond_chem_accuracy']} A")
+    r_out = summary["first_R_outside_chem_accuracy"]
+    print(f"CCSD(T) is outside chemical accuracy ({CHEM_ACCURACY_MEH} mEh) "
+          + (f"from R={r_out} A" if r_out is not None else "nowhere (converged points)"))
     if summary["ccsd_unconverged_R"]:
         print(f"CCSD did not converge at R={summary['ccsd_unconverged_R']} A "
               f"-- CCSD(T) values there are not reproducible (FCI is).")

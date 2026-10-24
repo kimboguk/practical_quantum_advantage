@@ -53,6 +53,7 @@ small N as a cross-check.
 | QAOA p = 12 | 1.75ᴺ | 1.46ᴺ |
 | QAOA + QMF | 1.32ᴺ | 1.21ᴺ |
 | MTS | 1.66ᴺ | 1.34ᴺ |
+| branch-and-bound (Gurobi, TTS) | — | 1.62ᴺ |
 | brute force | 2ᴺ | 2ᴺ |
 
 Circuit cross-check, N = 8, p = 12 (exact P(opt) = 0.614; random guessing = 0.0625):
@@ -71,6 +72,13 @@ useful depth needs error-corrected hardware.
 Reading:
 - Same **ordering** as the literature: QAOA + QMF has the smallest exponent.
   QAOA alone is not better than the classical heuristic.
+- But our QAOA + QMF (**1.32ᴺ**) is essentially **tied with the published MTS
+  (1.34ᴺ)**; it only looks better than *our* weaker MTS. At this N range it is
+  not evidence of an advantage on its own.
+- In the paper, QAOA alone (1.46ᴺ) is compared with **branch-and-bound**, not
+  with MTS: Gurobi's time-to-solution scales as **1.62ᴺ** (the Packebusch–Mertens
+  exact solver's time to *prove* optimality is 1.73ᴺ). QAOA alone beats exact
+  solvers, not the best heuristic.
 - Our absolute exponents are **worse** than published, for both sides: the
   2-parameter linear-ramp schedule is cruder than the paper's optimized fixed
   parameters, and our MTS is a basic version (population 20).
@@ -78,6 +86,42 @@ Reading:
   hard (N = 14 is easy, N = 21 is hard), so the fitted base moves noticeably
   with the fit range. At p = 8, N = 8–20, fitting from N = 12 gave 1.57 / 1.25 / 1.55
   instead.
+
+## Control: Max-Cut, the textbook QAOA problem (`maxcut_control.py`)
+
+Max-Cut is the standard first QAOA example — the cost has only 2-qubit ZZ terms,
+so circuits are shallow — which makes it a good QAOA tutorial and a useful
+**control**: classically it is the wrong place to look for an advantage.
+Goemans–Williamson (SDP relaxation + random-hyperplane rounding) *guarantees*
+an expected cut ≥ 0.878 × optimum, and simple local search finds the optimum on
+graphs like this almost immediately. There is no published QAOA advantage claim.
+
+Erdős–Rényi graph, 10 nodes, 28 edges, optimal cut 19 (ratio = expected cut / optimum):
+
+| p | QAOA exact | Aer, 4000 shots | IonQ noisy sim (`aria-1`), 1000 shots | 2q gates |
+|---:|---:|---:|---:|---:|
+| 1 | 0.861 | 0.862 | 0.851 | 28 |
+| 2 | 0.904 | 0.902 | — | 56 |
+| 3 | 0.926 | 0.927 | 0.880 | 84 |
+| 4 | 0.938 | 0.937 | — | 112 |
+| 5 | 0.946 | 0.946 | 0.854 | 140 |
+
+Classical baselines on the same graph: random guess 0.737; Goemans–Williamson
+mean of roundings **0.941** (guarantee 0.878; 25% of roundings hit the optimum);
+greedy local search reaches the optimum after a median of **3** random restarts.
+
+![Max-Cut QAOA vs classical](figures/maxcut_cpu.png)
+
+Reading:
+- QAOA needs depth **p = 5** just to match Goemans–Williamson's average, which
+  a laptop computes instantly, and local search finds the exact optimum anyway.
+- Under realistic noise, deeper is **not** better: p = 5 drops from 0.946 to
+  0.854, about the same as p = 1. The noise added by each layer outweighs the
+  gain from more layers.
+- Contrast with LABS: Max-Cut circuits are shallow enough to survive noise
+  partially, but there is no classical gap to exploit; LABS has the gap
+  (no approximation guarantee, a published scaling claim), but its circuits are
+  so deep that noise erases the result entirely (P(opt) 0.066 vs random 0.0625).
 
 ## What this does NOT prove (honest limits)
 
@@ -96,4 +140,8 @@ python run.py                                    # N=8..20, p=8  (~35 s on CPU)
 python run.py --n-max 24 --p 12 --fit-from 14    # result above (~6 min)
 python run.py --circuit-backend ionq_sim --circuit-n 8   # IonQ cloud (needs IONQ_API_KEY)
 python plot.py                                   # -> figures/tts_scaling.png
+
+python maxcut_control.py                         # Max-Cut control, Aer (~6 s)
+python maxcut_control.py --backend ionq_noise --sample-ps 1,3,5 --shots 1000
 ```
+IonQ runs need `IONQ_API_KEY` in the repo-root `.env` (see `.env.example`).

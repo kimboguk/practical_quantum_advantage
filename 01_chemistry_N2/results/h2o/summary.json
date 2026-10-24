@@ -2,29 +2,29 @@
   "rows": [
     {
       "R": 0.7,
-      "HF": -74.61874421394111,
-      "CCSD": -74.64365110442195,
-      "CCSD_T": -74.64368237605284,
-      "FCI": -74.64369313464019,
-      "err_ccsd_t_meh": 0.010758587350778726,
+      "HF": -74.61874421394108,
+      "CCSD": -74.64365110442192,
+      "CCSD_T": -74.64368237605281,
+      "FCI": -74.64369313464023,
+      "err_ccsd_t_meh": 0.010758587421832999,
       "ccsd_converged": true
     },
     {
       "R": 0.8,
-      "HF": -74.85022706383266,
-      "CCSD": -74.88293944976891,
-      "CCSD_T": -74.88298251073243,
-      "FCI": -74.88300179581184,
-      "err_ccsd_t_meh": 0.019285079403630334,
+      "HF": -74.85022706383262,
+      "CCSD": -74.88293944976887,
+      "CCSD_T": -74.88298251073239,
+      "FCI": -74.88300179581182,
+      "err_ccsd_t_meh": 0.019285079432052044,
       "ccsd_converged": true
     },
     {
       "R": 0.96,
-      "HF": -74.96331905254007,
-      "CCSD": -75.01303704449677,
-      "CCSD_T": -75.01310490169146,
+      "HF": -74.96331905254011,
+      "CCSD": -75.01303704449681,
+      "CCSD_T": -75.0131049016915,
       "FCI": -75.01315470150577,
-      "err_ccsd_t_meh": 0.049799814306084045,
+      "err_ccsd_t_meh": 0.04979981426345148,
       "ccsd_converged": true
     },
     {
@@ -32,54 +32,54 @@
       "HF": -74.9418025664523,
       "CCSD": -75.01240301523417,
       "CCSD_T": -75.01250433374467,
-      "FCI": -75.01262458312476,
-      "err_ccsd_t_meh": 0.1202493800889215,
+      "FCI": -75.01262458312475,
+      "err_ccsd_t_meh": 0.12024938007471064,
       "ccsd_converged": true
     },
     {
       "R": 1.3,
-      "HF": -74.83613481790776,
-      "CCSD": -74.9482145553748,
-      "CCSD_T": -74.94839847241587,
-      "FCI": -74.94877910650574,
-      "err_ccsd_t_meh": 0.3806340898648841,
+      "HF": -74.83613481790773,
+      "CCSD": -74.94821455537478,
+      "CCSD_T": -74.94839847241585,
+      "FCI": -74.94877910650577,
+      "err_ccsd_t_meh": 0.38063408992172754,
       "ccsd_converged": true
     },
     {
       "R": 1.5,
-      "HF": -74.70415687338819,
-      "CCSD": -74.87247615052115,
-      "CCSD_T": -74.87277707628718,
+      "HF": -74.70415687338823,
+      "CCSD": -74.8724761505212,
+      "CCSD_T": -74.87277707628722,
       "FCI": -74.87343608825373,
-      "err_ccsd_t_meh": 0.6590119665474958,
+      "err_ccsd_t_meh": 0.6590119665048633,
       "ccsd_converged": true
     },
     {
       "R": 1.8,
-      "HF": -74.51114758751648,
-      "CCSD": -74.79410199557266,
-      "CCSD_T": -74.79475409689654,
-      "FCI": -74.79057115350527,
-      "err_ccsd_t_meh": -4.18294339127101,
+      "HF": -74.51114758751645,
+      "CCSD": -74.79410199557665,
+      "CCSD_T": -74.7947540968975,
+      "FCI": -74.79057115350523,
+      "err_ccsd_t_meh": -4.182943392279981,
       "ccsd_converged": true
     },
     {
       "R": 2.1,
-      "HF": -74.35280978439533,
-      "CCSD": -74.77745467699556,
-      "CCSD_T": -74.77813768448043,
-      "FCI": -74.75379086818108,
-      "err_ccsd_t_meh": -24.346816299342322,
+      "HF": -74.35280978439535,
+      "CCSD": -74.77745467699549,
+      "CCSD_T": -74.7781376844814,
+      "FCI": -74.7537908681811,
+      "err_ccsd_t_meh": -24.34681630029445,
       "ccsd_converged": true
     },
     {
       "R": 2.5,
-      "HF": -74.2799345094082,
-      "CCSD": -74.64185352638165,
-      "CCSD_T": -74.64201891038795,
-      "FCI": -74.7400431990893,
-      "err_ccsd_t_meh": 98.02428870135316,
-      "ccsd_converged": false
+      "HF": -74.27993450940828,
+      "CCSD": -74.64187300531971,
+      "CCSD_T": -74.64203816955781,
+      "FCI": -74.74004319322154,
+      "err_ccsd_t_meh": 98.0050236637311,
+      "ccsd_converged": true
     }
   ],
   "summary": {
@@ -89,15 +89,13 @@
     "chem_accuracy_meh": 1.6,
     "worst": {
       "R": 2.5,
-      "err_meh": 98.02428870135316,
-      "err_kcal": 61.51112337869742
+      "err_meh": 98.0050236637311,
+      "err_kcal": 61.49903439420424
     },
-    "first_R_beyond_chem_accuracy": 1.8,
-    "max_abs_err_meh": 98.02428870135316,
-    "ccsd_unconverged_R": [
-      2.5
-    ],
-    "note": "CCSD(T) is the classical 'gold standard'; its growing, eventually unphysical error vs exact FCI marks the strong-correlation breakdown. FCI == ideal QPE in this basis.",
-    "honest_limits": "This small case is solved exactly by FCI and also well by classical strong-correlation methods (DMRG, CASSCF/MRCI). The real crossover where no classical method suffices is estimated around ~50 active orbitals."
+    "first_R_outside_chem_accuracy": 1.8,
+    "max_abs_err_meh": 98.0050236637311,
+    "ccsd_unconverged_R": [],
+    "note": "CCSD(T) is the classical 'gold standard'; its growing, eventually unphysical error vs exact FCI marks the strong-correlation breakdown (CCSD(T) is not variational). FCI == ideal QPE in this basis, given a good enough initial state.",
+    "honest_limits": "This small case is solved exactly by FCI and also well by classical strong-correlation methods (DMRG, CASSCF/MRCI). Systems where no classical method suffices are expected to need tens of active orbitals. STO-3G: method comparison within one basis, not agreement with experiment."
   }
 }

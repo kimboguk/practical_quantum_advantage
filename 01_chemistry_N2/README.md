@@ -28,7 +28,8 @@ ways, from crude to exact:
 
 Everything in Part 1 is computed classically with PySCF (`run.py`). No quantum
 circuit is run — the quantum-advantage point is a *scaling* argument (below).
-Part 2 (`run_sqd.py`) runs an actual quantum circuit on IonQ.
+Part 2 (`run_sqd.py`) runs an actual quantum circuit on the IonQ cloud
+simulator (ideal, and with the `aria-1` hardware noise model) — not on a QPU.
 
 ## Result
 
@@ -45,7 +46,9 @@ has broken down.
 
 The error grows from ~2 mEh near equilibrium to ~11 mEh at 1.5 Å, and at 2.0 Å
 CCSD(T) is **~108 mEh (≈68 kcal/mol) below** the exact energy — far past the
-1.6 mEh "chemical accuracy" line.
+1.6 mEh "chemical accuracy" line. (The small +0.8 mEh at 1.7 Å is not a
+recovery: the signed error is crossing from positive to negative between 1.5 Å
+and 2.0 Å and happens to pass near zero there.)
 
 > **Convergence caveat.** Beyond ~2.3 Å the CCSD iterations themselves **do
 > not converge** (PySCF reports `converged=False`), so the CCSD(T) values there
@@ -61,8 +64,8 @@ CCSD(T) is **~108 mEh (≈68 kcal/mol) below** the exact energy — far past the
   for large molecules there is **no exact classical fallback**.
 - An ideal fault-tolerant quantum computer runs Quantum Phase Estimation, whose
   cost is **polynomial** in system size *per run* — but it returns the ground
-  energy only with probability equal to the overlap of the prepared initial
-  state with the true ground state. For large strongly-correlated molecules
+  energy only with probability equal to the **squared overlap** |⟨ψ₀|ψ_init⟩|²
+  of the prepared initial state with the true ground state. For large strongly-correlated molecules
   that overlap may shrink rapidly with size, and no generic method is known to
   prepare a good initial state efficiently. The advantage therefore holds
   **provided a sufficiently good initial state can be prepared** (Lee et al.,
@@ -97,8 +100,12 @@ CCSD(T) is **~108 mEh (≈68 kcal/mol) below** the exact energy — far past the
 | H₂ | 4 | 0 | 2 electrons: CCSD is exact (control) |
 | LiH | 12 | 0.1 mEh | single bond, CCSD(T) holds |
 | F₂ | 20 | 0.5 mEh | single bond, CCSD(T) holds |
-| H₂O | 14 | −24 mEh at 2.1 Å | two bonds broken at once → breaks down |
+| H₂O | 14 | −24 mEh at 2.1 Å; +98 mEh at 2.5 Å* | two bonds broken at once → breaks down |
 | N₂ | 20 | −108 mEh at 2.0 Å | triple bond → strongest breakdown |
+
+\* At H₂O 2.5 Å CCSD is borderline: the error is reproducible (+98.0 mEh) but
+PySCF's `converged` flag flips between runs at its tolerance, so `run.py`'s
+"worst" (converged points only) reports either +98 at 2.5 Å or −24 at 2.1 Å.
 
 ## Part 2 — SQD: using quantum samples instead of the full space (`run_sqd.py`)
 
@@ -124,7 +131,7 @@ Error vs exact FCI, in mEh:
 
 How to read it:
 - **SQD vs CCSD(T):** near equilibrium CCSD(T) is better. In the strongly
-  correlated region SQD stays within ~4–24 mEh using ≤ 6% of the space and —
+  correlated region SQD stays within ~4–24 mEh using ≤ 6.25% of the space and —
   being variational — never drops below the exact energy, while CCSD(T) breaks
   down. SQD is still outside chemical accuracy (1.6 mEh) at this subspace size.
 - **Compare at equal subspace size.** Ideal samples concentrate on few

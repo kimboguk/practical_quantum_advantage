@@ -3,8 +3,9 @@
 Can we *show* where a quantum computer helps — with code anyone can run and
 numbers anyone can check? These self-contained demos do exactly that, at a
 small enough scale to run on a laptop, while being honest about what they do and
-do **not** prove. A fourth demo adds a backend-scaling study (local GPU and a
-real quantum vendor's cloud).
+do **not** prove. There are five demos: four application areas (chemistry,
+finance, turbulence, optimization) and one backend-scaling study (local GPU and
+a real quantum vendor's cloud).
 
 ## The ground rule
 
@@ -40,6 +41,11 @@ the honest limits.
   does not win yet.
 - **Demo C is a concept** — it illustrates one necessary ingredient for quantum
   CFD, nothing more.
+- **Demo D is tooling** — classical-simulation speed and cloud portability, not
+  a quantum claim.
+- **Demo E tests a published claim** — it reproduces the *ordering* of LABS
+  scaling exponents at small N, shows noise erasing the effect today, and uses
+  Max-Cut as a textbook QAOA control with no advantage claim.
 
 ## Reproducibility
 
@@ -47,7 +53,9 @@ the honest limits.
   [`requirements.txt`](requirements.txt). Verified with qiskit 2.6.0 /
   qiskit-aer 0.18.0 / pyscf 2.14.0.
 - Each demo is standalone: `python run.py && python plot.py`. Results are
-  deterministic (fixed seeds; demo B uses an exact statevector sampler).
+  deterministic (fixed seeds; demo B uses an exact statevector sampler), except
+  demo A's unconverged CCSD points (flagged in its output) and anything sampled
+  on the IonQ cloud.
 - A GPU is used automatically when available, with automatic CPU fallback
   (`common/backend.py`); demos A–C are small and run fine on CPU.
 

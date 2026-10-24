@@ -133,10 +133,14 @@ def main():
         scaling=("classical MC ~ 1/eps^2 (halving eps -> 4x samples); "
                  "quantum AE ~ 1/eps (halving eps -> ~2x oracle calls)"),
         honest_limits=("One oracle call is a deep circuit; on error-corrected "
-                       "hardware (slow logical clock, ~45 MHz cited for "
-                       "derivative pricing) it is far slower than one classical "
-                       "sample, pushing the real crossover to much smaller eps / "
-                       "larger problems. Classical MC also has importance "
+                       "hardware it is far slower than one classical sample. "
+                       "Advantage for derivative pricing would require ~4.7k "
+                       "logical qubits executing ~1e9 T-gates at a 45 MHz "
+                       "logical clock rate (Stamatopoulos et al., Quantum 2024, "
+                       "arXiv:2307.14310) -- a required speed far beyond "
+                       "projected error-corrected hardware -- pushing the real "
+                       "crossover to much smaller eps / larger problems. "
+                       "Classical MC also has importance "
                        "sampling. The quadratic speedup alone is not enough -- "
                        "which is why finance is not the first quantum priority."),
     )

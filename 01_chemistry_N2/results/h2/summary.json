@@ -101,10 +101,10 @@
       "err_meh": -0.00016412193715176215,
       "err_kcal": -0.00010298799266016512
     },
-    "first_R_beyond_chem_accuracy": null,
+    "first_R_outside_chem_accuracy": null,
     "max_abs_err_meh": 0.00016412193715176215,
     "ccsd_unconverged_R": [],
-    "note": "CCSD(T) is the classical 'gold standard'; its growing, eventually unphysical error vs exact FCI marks the strong-correlation breakdown. FCI == ideal QPE in this basis.",
-    "honest_limits": "This small case is solved exactly by FCI and also well by classical strong-correlation methods (DMRG, CASSCF/MRCI). The real crossover where no classical method suffices is estimated around ~50 active orbitals."
+    "note": "CCSD(T) is the classical 'gold standard'; its growing, eventually unphysical error vs exact FCI marks the strong-correlation breakdown (CCSD(T) is not variational). FCI == ideal QPE in this basis, given a good enough initial state.",
+    "honest_limits": "This small case is solved exactly by FCI and also well by classical strong-correlation methods (DMRG, CASSCF/MRCI). Systems where no classical method suffices are expected to need tens of active orbitals. STO-3G: method comparison within one basis, not agreement with experiment."
   }
 }
