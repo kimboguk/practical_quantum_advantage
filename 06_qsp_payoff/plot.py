@@ -1,7 +1,8 @@
 """Figures for Demo F (QSP payoff encoding).
 
-  qsp_payoff.png : left  - target payoff vs QSP amplitude for a few degrees d
-                   right - max error vs number of signal calls d (log-log)
+  qsp_payoff.png : left   - target payoff vs QSP amplitude for a few degrees d
+                   middle - max |QSP - payoff| vs signal calls d (linear)
+                   right  - max |QSP - Chebyshev| vs d, in 1e-15 (linear)
 Reads results/summary.json (run.py must be run first).
 """
 from __future__ import annotations
@@ -20,7 +21,7 @@ data = json.load(open(os.path.join(HERE, "results", "summary.json")))
 rows = {r["degree"]: r for r in data["rows"]}
 y = np.linspace(0, 1, 801)
 
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 5))
+fig, (a1, a2, a3) = plt.subplots(1, 3, figsize=(18, 5))
 a1.plot(y, payoff(y), color="black", lw=2.5, label="target payoff (scaled)")
 for d, col in ((4, ORANGE), (12, GREEN), (48, BLUE)):
     if d in rows:
@@ -35,14 +36,26 @@ a1.legend(fontsize=9, loc="upper left")
 ds = np.array(sorted(rows))
 err = np.array([rows[d]["err_total"] for d in ds])
 fit = np.array([rows[d]["err_qsp_fit"] for d in ds])
-a2.loglog(ds, err, "o-", color=BLUE, lw=2, label="max |QSP − payoff|")
-a2.loglog(ds, fit, "s--", color=RED, lw=1.2,
-          label="max |QSP − Chebyshev polynomial|  (phase fit)")
-a2.loglog(ds, err[0] * ds[0] / ds, ":", color="gray", label="∝ 1/d guide")
-a2.set_xticks([4, 8, 16, 32, 48]); a2.set_xticklabels(["4", "8", "16", "32", "48"])
-a2.minorticks_off()
+
+# middle: the error that matters -- vs the payoff, linear scale
+a2.plot(ds, err, "o-", color=BLUE, lw=2, label="max |QSP − payoff|")
+a2.plot(ds, err[0] * ds[0] / ds, ":", color="gray", label="∝ 1/d guide")
+a2.set_ylim(0, None)
+a2.set_xticks(ds[1::2])
 a2.set_xlabel("signal calls  d  (= polynomial degree)")
-a2.set_ylabel("max error (log scale)")
-a2.set_title("Accuracy is set by the polynomial, not by arithmetic")
-a2.legend(fontsize=9, loc="center right")
+a2.set_ylabel("max error vs payoff")
+a2.set_title("Total error: polynomial approximation (~1/d)")
+a2.legend(fontsize=9, loc="upper right")
+
+# right: the quantum encoding itself -- vs the Chebyshev polynomial, in 1e-15
+EPS = np.finfo(float).eps
+a3.plot(ds, fit / 1e-15, "s-", color=RED, lw=1.6,
+        label="max |QSP − Chebyshev polynomial|")
+a3.axhline(EPS / 1e-15, color="gray", ls=":", label="float64 machine epsilon")
+a3.set_ylim(0, None)
+a3.set_xticks(ds[1::2])
+a3.set_xlabel("signal calls  d  (= polynomial degree)")
+a3.set_ylabel("max difference  (× 10⁻¹⁵)")
+a3.set_title("Phase fit: exact up to rounding")
+a3.legend(fontsize=9, loc="upper left")
 save(fig, os.path.join(HERE, "figures", "qsp_payoff.png"))
