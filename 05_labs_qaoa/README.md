@@ -111,6 +111,10 @@ mean of roundings **0.941** (guarantee 0.878; 25% of roundings hit the optimum);
 greedy local search reaches the optimum after a median of **3** random restarts.
 
 ![Max-Cut QAOA vs classical](figures/maxcut_cpu.png)
+*Sampled on local Aer (noise-free, 4000 shots).*
+
+![Max-Cut QAOA under IonQ aria-1 noise](figures/maxcut_ionq_noise.png)
+*Sampled on the IonQ cloud simulator with the `aria-1` noise model (1000 shots, p = 1, 3, 5).*
 
 Reading:
 - QAOA needs depth **p = 5** just to match Goemans–Williamson's average, which
